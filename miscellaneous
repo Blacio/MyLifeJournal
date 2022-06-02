@@ -1,0 +1,66 @@
+ npm run tunnel (server)
+ npm run dev (server)
+ ngrok http 3000 (project)
+
+SERVER
+
+ mkdir <server_name>
+ npm init -y
+ npm install json-server ngrok
+ npm install bcrypt express jsonwebtoken mongoose nodemon
+
+ create file -> node src/index.js
+ with nodemon  "scripts": {
+           "dev": "nodemon src/index.js"
+         }
+     => npm run dev
+
+
+****
+
+"db.json" -> JSON
+"package.json" ->
+                  "scripts": {
+                    "db": "json-server -w db.json",
+                    "tunnel": "ngrok http 3000"
+                  }
+
+cmd 1: json-server -w db.json
+
+****
+
+APP
+
+ npx expo-cli init <AppName>
+ npm install react-navigation
+ expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+ npm install @react-native-community/masked-view
+ npm install react-native-elements
+
+ r -c
+
+ npm install axios
+
+ npm i babel-plugin-module-resolver metro-react-native-babel-preset // for RELATIVE PATHS
+ Add this to babel.config.js =>
+ module.exports = {
+     presets: ['module:metro-react-native-babel-preset']
+     plugins: [
+         [
+             'module-resolver',
+             {
+                 root: ['.'],
+                 extensions: ['.ios.js', '.android.js', '.js', '.ts', '.tsx', '.json'],
+                 alias: {
+                     '@': './src/components',
+                     'constants': './src/constants',
+                     '##': './src/examples',
+                 },
+             },
+         ]
+     ]
+ };
+
+ // We will use a PROVIDER to manage the data & navigation in our app
+ // It is better when we have more complex app and we want to avoid passing too many props
+ // REDUX library is used for functionality very similar to this PROVIDER
